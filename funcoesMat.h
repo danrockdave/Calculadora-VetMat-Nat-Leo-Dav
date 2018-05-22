@@ -12,16 +12,23 @@ Professor Dr. Leonardo Sampaio
 #define funcoesMat_h
 
 #include <stdio.h>
-#include "funcoesMat.c"
+
 
 #endif /* funcoesMat_h */
 
-void Ler_Matrizes(void);
-void Imprimir_Matrizes(void);
-void Somar_Matrizes(void);
-void Subtracao_Matrizes(void);
-void Transposta_Matriz(void);
-void Determinante_Matriz(void);
-void Simetria_Matriz(void);
-void Multiplicar_Matrizes(void);
+//cria a struct com as variáveis utilizadas nas funções de matrizes
+typedef struct {
+    int linhas;
+    int colunas;
+    int **p;
+}matriz;
+
+void Ler_Matrizes(matriz *m);
+void Imprimir_Matrizes(matriz m1, matriz m2);
+void Somar_Matrizes(matriz m1, matriz m2);
+void Subtracao_Matrizes(matriz m1, matriz m2);
+void Transposta_Matriz(matriz m1, matriz m2);
+void Determinante_Matriz(matriz m1, matriz m2);
+void Simetria_Matriz(matriz m1, matriz m2);
+void Multiplicar_Matrizes(matriz m1, matriz m2);
 

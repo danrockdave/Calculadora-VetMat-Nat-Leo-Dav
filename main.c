@@ -18,6 +18,9 @@ void Mostrar_menu_principal(void);
 void Menu_matrizes(void);
 void Menu_vetores(void);
 
+vetor v1, v2;
+matriz m1,m2;
+
 
 //Função que chama o menu das Matrizes
 void Menu_matrizes(){
@@ -40,43 +43,45 @@ void Menu_matrizes(){
 
         //Lê o valor digitado pelo usuário
         scanf("%s", EscolhaM);
+int teste = 0;
         OpcaoM = atoi(EscolhaM);
         switch (OpcaoM) {
             case 1:
-                Ler_Matrizes();
+                Ler_Matrizes(&m1);
+		Ler_Matrizes(&m2);
                 Menu_matrizes();
                 break;
 
             case 2:
-               Imprimir_Matrizes();
+                Imprimir_Matrizes(m1,m2);
                 Menu_matrizes();
                 break;
 
             case 3:
-                Somar_Matrizes();
+                Somar_Matrizes(m1,m2);
                 Menu_matrizes();
                 break;
             case 4:
-                Subtracao_Matrizes();
+                Subtracao_Matrizes(m1,m2);
                 Menu_matrizes();
                 break;
 
             case 5:
-                Multiplicar_Matrizes();
+                Multiplicar_Matrizes(m1,m2);
                 Menu_matrizes();
                 break;
 
             case 6:
-                Transposta_Matriz();
+                Transposta_Matriz(m1,m2);
                 Menu_matrizes();
                 break;
 
             case 7:
-                Determinante_Matriz();
+                Determinante_Matriz(m1,m2);
                 Menu_matrizes();
                 break;
             case 8:
-                Simetria_Matriz();
+		Simetria_Matriz(m1,m2);
                 Menu_matrizes();
                 break;
             case 9:
@@ -111,31 +116,32 @@ void Menu_vetores(){
         OpcaoM = atoi(EscolhaM);
         switch (OpcaoM) {
             case 1:
-                Ler_Vetores();
+                Ler_Vetores(&v1, &v2);
+		
                 Menu_vetores();
                 break;
 
             case 2:
-                Imprimir_Vetores();
+                Imprimir_Vetores(v1,v2);
                 Menu_vetores();
                 break;
 
             case 3:
-                Somar_Vetores();
+                Somar_Vetores(v1,v2);
                 Menu_vetores();
                 break;
 
             case 4:
-                Subtrair_Vetores();
+                Subtrair_Vetores(v1,v2);
                 Menu_vetores();
                 break;
 
             case 5:
-                Multiplicar_Vetores();
+                Multiplicar_Vetores(v1,v2);
                 Menu_vetores();
                 break;
             case 6:
-                Produto_Escalar();
+                Produto_Escalar(v1,v2);
                 Menu_vetores();
                 break;
             case 7:

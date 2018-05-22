@@ -14,16 +14,8 @@
 #include "funcoesMat.h"
 
 
-//cria a struct com as variáveis utilizadas nas funções de matrizes
-struct matriz {
-    int linhas;
-    int colunas;
-    int **p;
-};
-struct matriz m1, m2;
-
 //Verifica se uma matriz é simétrica ou não
-void Simetria_Matriz(){
+void Simetria_Matriz(matriz m1, matriz m2){
 
     int i,j,ic,jc,cont = 0; // variáveis contadoras do loop
     //Tratamento de erro
@@ -37,7 +29,8 @@ void Simetria_Matriz(){
         printf("\n\n\tAs Matrizes [A] e [B] não são simétricas! \n\n");
     }else{
         //Imprime na tela as matrizes cadastradas na função LerMatrizes()
-        Imprimir_Matrizes();
+        Imprimir_Matrizes(m1,m2);
+	
         do{
             //Printa as dimensões das duas matrizes cadastradas
             printf("\n\tMatriz [A] %d x %d - 1 ",m1.linhas,m1.colunas);
@@ -114,7 +107,7 @@ void Simetria_Matriz(){
     }
 }
 
-void Determinante_Matriz(){
+void Determinante_Matriz(matriz m1, matriz m2){
     // tratamento de erro
     char escolhaMatrizS[10];
     int escolhaMatriz;
@@ -132,7 +125,8 @@ void Determinante_Matriz(){
             printf("\tMatrizes [A]: %d x %d  \n\tMatriz [B]: %d x %d \n\tMatrizes superiores a 3° ordem\n\n",m1.linhas,m1.colunas,m2.linhas,m2.colunas);
         }else{
             //Imprime as matrizes cadastradas na função Ler_Matrizes()
-            Imprimir_Matrizes();
+            Imprimir_Matrizes(m1,m2);
+
             do{
                 printf("\n\t MATRIZ [A] %d x %d - - - - - - - - - - - - 1 -", m1.linhas, m1.colunas);
                 printf("\n\t MATRIZ [B] %d x %d - - - - - - - - - - - - 2 -", m2.linhas, m2.colunas);
@@ -225,14 +219,14 @@ void Determinante_Matriz(){
 }
 
 //Calcula a transposta de uma das duas matrizes cadastradas na função "Ler_Matrizes();"
-void Transposta_Matriz(){
+void Transposta_Matriz(matriz m1, matriz m2){
     int i,j; // Variáveis contadoras do loop
     //Tratamento de erro
     char escolhaMatrizS[10];
     int escolhaMatriz;
 
     //Printa na tela as duas matrizes cadastradas na função Ler_Matrizes()
-    Imprimir_Matrizes();
+    Imprimir_Matrizes(m1,m2);	
 
     do{
         //Printa na tela as dimensões das duas matrizes cadastradas
@@ -276,28 +270,27 @@ void Transposta_Matriz(){
     }while(escolhaMatriz != 1 && escolhaMatriz != 2);
 }
 
-
-void Ler_Matrizes(){
+void Ler_Matrizes(matriz *m){
     int linhas = 0, colunas = 0;
     puts("\nDigite o número de linhas da primera matriz.");
     printf("Linhas: ");
 
     scanf("%d", &linhas);
-    m1.linhas = linhas;
+    m->linhas = linhas;
     puts("\nDigite o numero de colunas da primeira matriz.");
     printf("Colunas: ");
     scanf("%d", &colunas);
-    m1.colunas = colunas;
-    m1.p = (int **) malloc(m1.linhas*sizeof(int));
+    m->colunas = colunas;
+    m->p = (int **) malloc(m->linhas*sizeof(int));
 
-    for(int i = 0; i < m1.linhas ; i++){
-        m1.p[i] = (int *) malloc(m1.colunas * sizeof(int));
-        for(int j = 0; j < m1.colunas; j++){
+    for(int i = 0; i < m->linhas ; i++){
+        m->p[i] = (int *) malloc(m->colunas * sizeof(int));
+        for(int j = 0; j < m->colunas; j++){
             printf("Digite o valor do elemento da matriz 1 [%d][%d]: ",i,j);
-            scanf("%d", &m1.p[i][j]);
+            scanf("%d", &m->p[i][j]);
         }
     }
-    puts("\nDigite o número de linhas da segunda matriz.\n");
+   /* puts("\nDigite o número de linhas da segunda matriz.\n");
     printf("Linhas: ");
     scanf("%d",&linhas);
     m2.linhas = linhas;
@@ -312,13 +305,12 @@ void Ler_Matrizes(){
             printf("Digite o valor do elemento da matriz 2 [%d][%d]: ", i,j);
             scanf("%d", &m2.p[i][j]);
         }
-    }
+    }*/
 }
-
-void Imprimir_Matrizes(){
+//Imprime as matrizes cadastradas na função lerMatrizes()
+void Imprimir_Matrizes(matriz m1, matriz m2){
     int i,j;
-
-    printf("\n\tMatriz [A] : \n");
+     printf("\n\n\tMatriz [A] : \n");
     for(i = 0; i < m1.linhas ; i++){
         printf("\t| ");
         for(j = 0; j < m1.colunas; j++){
@@ -339,7 +331,7 @@ void Imprimir_Matrizes(){
 }
 
 //Realiza a soma entre duas matrizes de mesmas dimensões
-void Somar_Matrizes(){
+void Somar_Matrizes(matriz m1, matriz m2){
     int i = 0 ,j = 0;
     // matriz resultante :
     int **mSoma;
@@ -350,7 +342,7 @@ void Somar_Matrizes(){
       //  return Menu_matrizes();
     }else{
         //Imprime na tela as matrizes cadastradas na função LerMatrizes()
-        Imprimir_Matrizes();
+        Imprimir_Matrizes(m1,m2);	
 
         // Operação da soma:
         mSoma = (int **) malloc(m1.linhas * sizeof(int));
@@ -374,11 +366,10 @@ void Somar_Matrizes(){
 
     }
     printf("\n");
-    //return Menu_matrizes();
 }
 
 //Realiza a subtração entre duas matrizes de mesmas dimensões
-void Subtracao_Matrizes(){
+void Subtracao_Matrizes(matriz m1, matriz m2){
     int i = 0,j = 0;
     // matriz resultante :
     int **mSub;
@@ -388,7 +379,7 @@ void Subtracao_Matrizes(){
         printf("\n\n\tAs matrizes [A] e [B] precisam ter a mesma dimensão\n");
     }else{
         //Imprime na tela as matrizes cadastradas na função LerMatrizes()
-        Imprimir_Matrizes();
+        Imprimir_Matrizes(m1,m2);	
         //Operação da soma:
         mSub = (int **) malloc(m1.linhas * sizeof(int));
         for(i = 0; i < m1.linhas; i++){
@@ -411,8 +402,10 @@ void Subtracao_Matrizes(){
     }
     printf("\n");
 }
+
+
 //Realiza uma multiplicação entre duas matrizes de mesma dimensão
-void Multiplicar_Matrizes(){
+void Multiplicar_Matrizes(matriz m1, matriz m2){
     int i, j, l;
     int **mMult;
     int armazenar = 0;
@@ -421,7 +414,7 @@ void Multiplicar_Matrizes(){
         printf("\n\n\tAs matrizes [A] e [B] precisam ter a mesma dimensão\n");
     }else{
         //Imprime na tela as matrizes cadastradas na função LerMatrizes()
-        Imprimir_Matrizes();
+        Imprimir_Matrizes(m1,m2);	
 
         printf("\tMatriz Resultante [A] * [B] :\n");
         mMult = (int **) malloc(m1.linhas * sizeof(int));

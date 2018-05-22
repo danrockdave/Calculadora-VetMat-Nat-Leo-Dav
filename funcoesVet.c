@@ -14,48 +14,38 @@
 #include "funcoesVet.h"
 
 
-//cria a struct com as variáveis utilizadas nas funções de vetores
-struct vetor{
-    int tamanho;
-    int *p;
-};
-
-struct vetor v1, v2;
-
-
 
 //Cadastra vetores para serem usados em outras operações
-void Ler_Vetores(){
+void Ler_Vetores(vetor *v1, vetor *v2){
     int tamanho = 0;
     puts("\nO número de linhas de um vetor é sempre 1.");
-    v1.tamanho = tamanho;
+    v1->tamanho = tamanho;
     puts("\nDigite o tamanho (número de colunas) do vetor.");
     printf("Tamanho: ");
     scanf("%d", &tamanho);
-    v1.tamanho = tamanho;
-    v1.p = (int *) malloc(v1.tamanho * sizeof(int));
+    v1->tamanho = tamanho;
+    v1->p = (int *) malloc(v1->tamanho * sizeof(int));
 
-    for(int j = 0; j < v1.tamanho; j++){
+    for(int j = 0; j < v1->tamanho; j++){
         printf("\nDigite o valor dos elementos do vetor 1 [%d]: ",j);
-        scanf("%d", &v1.p[j]);
+        scanf("%d", &v1->p[j]);
     }
 
-    v2.tamanho = tamanho;
+    v2->tamanho = tamanho;
     puts("\nDigite o tamanho (número de colunas) do vetor.");
     printf("Tamanho: ");
     scanf("%d", &tamanho);
-    v2.tamanho = tamanho;
-    v2.p = (int *) malloc(v2.tamanho * sizeof(int));
+    v2->tamanho = tamanho;
+    v2->p = (int *) malloc(v2->tamanho * sizeof(int));
 
-    for(int j = 0; j < v2.tamanho; j++){
+    for(int j = 0; j < v2->tamanho; j++){
         printf("\nDigite o valor dos elementos do vetor 2 [%d]: ",j);
-        scanf("%d", &v2.p[j]);
+        scanf("%d", &v2->p[j]);
     }
-}
-
+}	
 
 //Imprime os vetores cadastrados na leitura:
-void Imprimir_Vetores(){
+void Imprimir_Vetores(vetor v1, vetor v2){
     int j;
     printf("\n\tVetor [A]: [");
 
@@ -69,11 +59,11 @@ void Imprimir_Vetores(){
     for(j = 0; j < v2.tamanho; j++){
         printf(" %d", v2.p[j]);
     }
-    printf("]\n");
+    printf("]\n"); 
 }
 
 //Realiza a soma entre dois vetores de mesma dimensão:
-void Somar_Vetores(){
+void Somar_Vetores(vetor v1, vetor v2){
     int j;
     //Vetor resultante:
     int *vSoma;
@@ -88,11 +78,11 @@ void Somar_Vetores(){
             vSoma[j] = v1.p[j] + v2.p[j];
         }
 
-        Imprimir_Vetores();
+        Imprimir_Vetores(v1,v2);
         //Imprime o resultado
         printf("\tVetor [A] + [B] = [");
         for(j = 0; j < v1.tamanho; j++){
-            printf(" %d;",vSoma[j]);
+            printf(" %d",vSoma[j]);
         }
         printf("]\n\n");
         free(vSoma);
@@ -100,26 +90,26 @@ void Somar_Vetores(){
     printf("\n");
 }
 //Realiza a soma entre dois vetores de mesma dimensão:
-void Subtrair_Vetores(){
+void Subtrair_Vetores(vetor v1, vetor v2){
     int j;
     //Vetor resultante:
     int *vSub;
 
     if(v1.tamanho != v2.tamanho){
-        //condição de existência da soma:
+        //condição de existência da subtração:
         printf("\n\n\tOs vetores [A] e [B] precisam ter a mesma dimensão\n");
     }else{
-        // Operação da soma:
+        // Operação da subtração:
         vSub = (int*) malloc(v1.tamanho * sizeof(int));
         for(j = 0; j < v1.tamanho; j++){
             vSub[j] = v1.p[j] - v2.p[j];
         }
 
-        Imprimir_Vetores();
+        Imprimir_Vetores(v1,v2);
         //Imprime o resultado
         printf("\tVetor [A] - [B] = [");
         for(j = 0; j < v1.tamanho; j++){
-            printf(" %d;",vSub[j]);
+            printf(" %d",vSub[j]);
         }
         printf("]\n\n");
         free (vSub);
@@ -129,7 +119,7 @@ void Subtrair_Vetores(){
 }
 
 
-void Multiplicar_Vetores(){
+void Multiplicar_Vetores(vetor v1, vetor v2){
     int j;
     int escalar;
     //Vetor resultante:
@@ -138,7 +128,8 @@ void Multiplicar_Vetores(){
     printf("Digite o valor da escalar\n");
     scanf("%d", &escalar);
 
-    Imprimir_Vetores();
+    Imprimir_Vetores(v1,v2);
+	
     // Operação da soma:
     vMult = (int*) malloc(v1.tamanho * sizeof(int));
     for(j = 0; j < v1.tamanho; j++){
@@ -166,7 +157,7 @@ void Multiplicar_Vetores(){
     printf("\n");
 }
 
-void Produto_Escalar(){
+void Produto_Escalar(vetor v1, vetor v2){
     int j;
     //Vetor resultante:
     int *vMult;
@@ -177,7 +168,8 @@ void Produto_Escalar(){
         //condição de existência da soma:
         printf("\n\n\tOs vetores [A] e [B] precisam ter a mesma dimensão\n");
     }else{
-        Imprimir_Vetores();
+        Imprimir_Vetores(v1,v2);
+	
         // Operação do produto:
         vMult = (int*) malloc(v1.tamanho * sizeof(int));
         for(j = 0; j < v1.tamanho; j++){

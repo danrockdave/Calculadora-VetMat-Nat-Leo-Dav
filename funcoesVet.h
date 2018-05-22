@@ -12,15 +12,22 @@
 #define funcoesVet_h
 
 #include <stdio.h>
-#include "funcoesVet.c"
 
 #endif /* funcoesVet_h */
 
-void Ler_Vetores(void);
-void Imprimir_Vetores(void);
-void Somar_Vetores(void);
-void Subtrair_Vetores(void);
-void Produto_Escalar(void);
-void Multiplicar_Vetores(void);
+
+//cria a struct com as variáveis utilizadas nas funções de vetores
+typedef struct {
+    int tamanho;
+    int *p;
+}vetor;
+
+
+void Ler_Vetores(vetor *v1, vetor *v2);
+void Imprimir_Vetores(vetor v1, vetor v2);
+void Somar_Vetores(vetor v1, vetor v2);
+void Subtrair_Vetores(vetor v1, vetor v2);
+void Produto_Escalar(vetor v1, vetor v2);
+void Multiplicar_Vetores(vetor v1, vetor v2);
 
 
