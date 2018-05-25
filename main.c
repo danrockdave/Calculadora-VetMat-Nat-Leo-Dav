@@ -47,8 +47,7 @@ int teste = 0;
         OpcaoM = atoi(EscolhaM);
         switch (OpcaoM) {
             case 1:
-                Ler_Matrizes(&m1);
-		Ler_Matrizes(&m2);
+                Ler_Matrizes(&m1, &m2);
                 Menu_matrizes();
                 break;
 
@@ -163,7 +162,7 @@ int main() {
 
     do {
         //Imprime na tela as opções do Menu Principal
-        puts("Calculadora de Matrizes e Vetores\n");
+        puts("\nCalculadora de Matrizes e Vetores\n");
         puts("Tecle uma das opções\n");
         puts("1 - Calculadora de matrizes\n");
         puts("2 - Calculadora de vetores\n");

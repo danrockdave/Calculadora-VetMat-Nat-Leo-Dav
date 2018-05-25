@@ -270,42 +270,42 @@ void Transposta_Matriz(matriz m1, matriz m2){
     }while(escolhaMatriz != 1 && escolhaMatriz != 2);
 }
 
-void Ler_Matrizes(matriz *m){
+void Ler_Matrizes(matriz *m1,matriz *m2){
     int linhas = 0, colunas = 0;
     puts("\nDigite o número de linhas da primera matriz.");
     printf("Linhas: ");
 
     scanf("%d", &linhas);
-    m->linhas = linhas;
+    m1->linhas = linhas;
     puts("\nDigite o numero de colunas da primeira matriz.");
     printf("Colunas: ");
     scanf("%d", &colunas);
-    m->colunas = colunas;
-    m->p = (int **) malloc(m->linhas*sizeof(int));
+    m1->colunas = colunas;
+    m1->p = (int **) malloc(m1->linhas*sizeof(int));
 
-    for(int i = 0; i < m->linhas ; i++){
-        m->p[i] = (int *) malloc(m->colunas * sizeof(int));
-        for(int j = 0; j < m->colunas; j++){
+    for(int i = 0; i < m1->linhas ; i++){
+        m1->p[i] = (int *) malloc(m1->colunas * sizeof(int));
+        for(int j = 0; j < m1->colunas; j++){
             printf("Digite o valor do elemento da matriz 1 [%d][%d]: ",i,j);
-            scanf("%d", &m->p[i][j]);
+            scanf("%d", &m1->p[i][j]);
         }
     }
-   /* puts("\nDigite o número de linhas da segunda matriz.\n");
+    puts("\nDigite o número de linhas da segunda matriz.\n");
     printf("Linhas: ");
     scanf("%d",&linhas);
-    m2.linhas = linhas;
+    m2->linhas = linhas;
     puts("\nDigite o número de colunas da segunda matriz.\n");
     printf("Colunas: ");
     scanf("%d", &colunas);
-    m2.colunas = colunas;
-    m2.p = (int **) malloc(m2.linhas*sizeof(int));
-    for(int i = 0; i < m2.linhas; i++){
-        m2.p[i] = (int *) malloc(m2.colunas*sizeof(int));
-        for(int j = 0; j < m2.colunas; j++){
+    m2->colunas = colunas;
+    m2->p = (int **) malloc(m2->linhas*sizeof(int));
+    for(int i = 0; i < m2->linhas; i++){
+        m2->p[i] = (int *) malloc(m2->colunas*sizeof(int));
+        for(int j = 0; j < m2->colunas; j++){
             printf("Digite o valor do elemento da matriz 2 [%d][%d]: ", i,j);
-            scanf("%d", &m2.p[i][j]);
+            scanf("%d", &m2->p[i][j]);
         }
-    }*/
+    }
 }
 //Imprime as matrizes cadastradas na função lerMatrizes()
 void Imprimir_Matrizes(matriz m1, matriz m2){

@@ -23,7 +23,7 @@ typedef struct {
     int **p;
 }matriz;
 
-void Ler_Matrizes(matriz *m);
+void Ler_Matrizes(matriz *m1, matriz *m2);
 void Imprimir_Matrizes(matriz m1, matriz m2);
 void Somar_Matrizes(matriz m1, matriz m2);
 void Subtracao_Matrizes(matriz m1, matriz m2);
