@@ -1,4 +1,3 @@
-
 /*
  Trabalho realizado pelos alunos:
  Davi Fontenele Meira Marçal
@@ -15,28 +14,30 @@
 
 //Cadastra vetores para serem usados em outras operações
 void Ler_Vetores(vetor *v1, vetor *v2){
+    int j;
     int tamanho = 0;
     puts("\nO número de linhas de um vetor é sempre 1.");
     v1->tamanho = tamanho;
-    puts("\nDigite o tamanho (número de colunas) do vetor.");
+    puts("\nDigite o tamanho do vetor.");
     printf("Tamanho: ");
     scanf("%d", &tamanho);
     v1->tamanho = tamanho;
-    v1->p = (float *) malloc(v1->tamanho * sizeof(float));
+ 
+   v1->p = (float *) malloc(v1->tamanho * sizeof(float));
 
-    for(int j = 0; j < v1->tamanho; j++){
+    for(j = 0; j < v1->tamanho; j++){
         printf("\nDigite o valor dos elementos do vetor 1 [%d]: ",j);
         scanf("%f", &v1->p[j]);
     }
 
     v2->tamanho = tamanho;
-    puts("\nDigite o tamanho (número de colunas) do vetor.");
+    puts("\nDigite o tamanho do vetor.");
     printf("Tamanho: ");
     scanf("%d", &tamanho);
     v2->tamanho = tamanho;
     v2->p = (float *) malloc(v2->tamanho * sizeof(float));
 
-    for(int j = 0; j < v2->tamanho; j++){
+    for(j = 0; j < v2->tamanho; j++){
         printf("\nDigite o valor dos elementos do vetor 2 [%d]: ",j);
         scanf("%f", &v2->p[j]);
     }
@@ -128,7 +129,7 @@ void Multiplicar_Vetores(vetor v1, vetor v2){
 
     Imprimir_Vetores(v1,v2);
 	
-    // Operação da soma:
+    // Operação da multiplicação:
     vMult = (float*) malloc(v1.tamanho * sizeof(float));
     for(j = 0; j < v1.tamanho; j++){
         vMult[j] = v1.p[j] * escalar;
@@ -163,7 +164,7 @@ void Produto_Escalar(vetor v1, vetor v2){
     float resultado = 0;
 
     if(v1.tamanho != v2.tamanho){
-        //condição de existência da soma:
+        //condição de existência:
         printf("\n\n\tOs vetores [A] e [B] precisam ter a mesma dimensão\n");
     }else{
         Imprimir_Vetores(v1,v2);

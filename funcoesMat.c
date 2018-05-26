@@ -1,4 +1,3 @@
-
 /*
  Trabalho realizado pelos alunos:
  Davi Fontenele Meira Marçal
@@ -77,7 +76,7 @@ void Simetria_Matriz(matriz m1, matriz m2){
                         // Transposta de B // Matriz B :
                         for(i = 0,ic = 0; (i < m2.colunas) && (ic < m2.linhas); i++,ic++){
                             for(j = 0,jc = 0; (j < m2.linhas) && (jc < m2.colunas); j++,jc++){
-                                // contar quantas vezes a condicao eh verdadeira :
+                                //Conta quantas vezes a condição é verdadeira :
                                 if(m2.p[j][i] == m2.p[ic][jc]){
                                     cont = cont + 1;
                                 }else{
@@ -103,7 +102,7 @@ void Simetria_Matriz(matriz m1, matriz m2){
                     printf("\n\t\tDigite uma opção válida\n\n");
                 }
             }
-        }while(escolhaMatriz!=1 && escolhaMatriz!=2); // loop caso nao digite 1 ou 2 :
+        }while(escolhaMatriz!=1 && escolhaMatriz!=2); // loop caso não digite 1 ou 2 :
     }
 }
 
@@ -115,7 +114,7 @@ void Determinante_Matriz(matriz m1, matriz m2){
     float det;
 
     if((m1.linhas != m1.colunas) && (m2.linhas != m2.colunas)){
-        // condicao de existencia invalida tanto pra A quanto pra B :
+        // condicao de existência inválida tanto pra A quanto pra B :
         printf("\n\n\tNão é possível realizar a operação para as Matrizes [A] e [B] :\n");
         printf("\tMatriz [A]: %d x %d  \n\tMatriz [B]: %d x %d \n\n",m1.linhas,m1.colunas,m2.linhas,m2.colunas);
     }else{
@@ -139,7 +138,7 @@ void Determinante_Matriz(matriz m1, matriz m2){
                 if(escolhaMatriz == 1){
 
                     if(m1.linhas != m1.colunas){
-                        // caso invalido somente para matriz A
+                        // caso inválido somente para matriz A
                         printf("\n\n\tOperação inválida para a Matriz [A]:\n");
                         printf("\tMatriz [A]:%d x %d \n\n",m1.linhas,m1.colunas);
                     }else{
@@ -175,7 +174,7 @@ void Determinante_Matriz(matriz m1, matriz m2){
 
                     if(escolhaMatriz == 2){
                         if(m2.colunas != m2.colunas){
-                            // caso so a matriz B invalida
+                            // caso matriz B inválida
                             printf("\n\n\tOperação inválida para a Matriz [B] :\n");
                             printf("\tMatriz [B]: %d x %d \n\n",m2.linhas,m2.colunas);
                         }else{
@@ -208,7 +207,7 @@ void Determinante_Matriz(matriz m1, matriz m2){
                         }
 
                     }else{
-                        //Caso seja digitada uma opção
+                        //Caso não seja digitada uma opção válida
                         printf("\n\t\tDigite uma opção válida! (1 ou 2)\n\n");
                     }
                 }
@@ -271,6 +270,7 @@ void Transposta_Matriz(matriz m1, matriz m2){
 }
 
 void Ler_Matrizes(matriz *m1,matriz *m2){
+    int i, j;
     int linhas = 0, colunas = 0;
     puts("\nDigite o número de linhas da primera matriz.");
     printf("Linhas: ");
@@ -283,9 +283,9 @@ void Ler_Matrizes(matriz *m1,matriz *m2){
     m1->colunas = colunas;
     m1->p = (float **) malloc(m1->linhas*sizeof(float));
 
-    for(int i = 0; i < m1->linhas ; i++){
+    for(i = 0; i < m1->linhas ; i++){
         m1->p[i] = (float *) malloc(m1->colunas * sizeof(float));
-        for(int j = 0; j < m1->colunas; j++){
+        for(j = 0; j < m1->colunas; j++){
             printf("Digite o valor do elemento da matriz 1 [%d][%d]: ",i,j);
             scanf("%f", &m1->p[i][j]);
         }
@@ -299,9 +299,9 @@ void Ler_Matrizes(matriz *m1,matriz *m2){
     scanf("%d", &colunas);
     m2->colunas = colunas;
     m2->p = (float **) malloc(m2->linhas*sizeof(float));
-    for(int i = 0; i < m2->linhas; i++){
+    for(i = 0; i < m2->linhas; i++){
         m2->p[i] = (float *) malloc(m2->colunas*sizeof(float));
-        for(int j = 0; j < m2->colunas; j++){
+        for(j = 0; j < m2->colunas; j++){
             printf("Digite o valor do elemento da matriz 2 [%d][%d]: ", i,j);
             scanf("%f", &m2->p[i][j]);
         }
@@ -380,7 +380,7 @@ void Subtracao_Matrizes(matriz m1, matriz m2){
     }else{
         //Imprime na tela as matrizes cadastradas na função LerMatrizes()
         Imprimir_Matrizes(m1,m2);	
-        //Operação da soma:
+        //Operação da subtração:
         mSub = (float **) malloc(m1.linhas * sizeof(float));
         for(i = 0; i < m1.linhas; i++){
             mSub[i] = (float *) malloc(m1.linhas * sizeof(float));
