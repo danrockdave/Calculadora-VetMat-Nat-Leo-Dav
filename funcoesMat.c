@@ -112,7 +112,7 @@ void Determinante_Matriz(matriz m1, matriz m2){
     char escolhaMatrizS[10];
     int escolhaMatriz;
     // armazenar valor da determinante de matriz terceira ordem :
-    int det;
+    float det;
 
     if((m1.linhas != m1.colunas) && (m2.linhas != m2.colunas)){
         // condicao de existencia invalida tanto pra A quanto pra B :
@@ -145,11 +145,11 @@ void Determinante_Matriz(matriz m1, matriz m2){
                     }else{
                         if(m1.linhas == 1){
                             // caso matriz de tamanho 1x1
-                            printf("\n\tDeterminante da Matriz [A] = %d\n\n",m1.p[0][0]);
+                            printf("\n\tDeterminante da Matriz [A] = %5.2f\n\n",m1.p[0][0]);
                         }else{
                             if(m1.linhas == 2){
                                 // caso matriz de tamanho 2x2
-                                printf("\n\tDeterminante da Matriz [A] = %d \n\n",(m1.p[0][0] * m1.p[1][1]) - (m1.p[0][1] * m1.p[1][0]) );
+                                printf("\n\tDeterminante da Matriz [A] = %5.2f\n\n",(m1.p[0][0] * m1.p[1][1]) - (m1.p[0][1] * m1.p[1][0]) );
                             }else{
                                 if(m1.linhas == 3){
                                     // caso matriz 3x3
@@ -159,7 +159,7 @@ void Determinante_Matriz(matriz m1, matriz m2){
                                     ((m1.p[2][0] * m1.p[1][1] * m1.p[0][2])*(-1)) + // diagonal secundaria
                                     ((m1.p[0][0] * m1.p[2][1] * m1.p[1][2])*(-1)) + // paralelas
                                     ((m1.p[1][0] * m1.p[0][1] * m1.p[2][2])*(-1)); // paralelas
-                                    printf("\n\tDeterminante da Matriz [A] = %d \n\n", det);
+                                    printf("\n\tDeterminante da Matriz [A] = %5.2f \n\n", det);
                                 }else{
                                     if(m1.linhas >= 4){
                                         // caso superior a ordem 3
@@ -181,11 +181,11 @@ void Determinante_Matriz(matriz m1, matriz m2){
                         }else{
                             if(m2.linhas == 1){
                                 // caso matriz de tamanho 1x1
-                                printf("\n\tDeterminante da Matriz [B] = %d\n\n",m2.p[0][0]);
+                                printf("\n\tDeterminante da Matriz [B] = %5.2f\n\n",m2.p[0][0]);
                             }else{
                                 if(m2.linhas == 2){
                                     // caso matriz de tamanho 2x2
-                                    printf("\n\tDeterminante da Matriz [B] = %d \n\n",(m2.p[0][0] * m2.p[1][1]) - (m2.p[0][1] * m2.p[1][0]) );
+                                    printf("\n\tDeterminante da Matriz [B] = %5.2f \n\n",(m2.p[0][0] * m2.p[1][1]) - (m2.p[0][1] * m2.p[1][0]) );
                                 }else{
                                     if(m2.linhas == 3){
                                         // caso matriz 3x3
@@ -195,7 +195,7 @@ void Determinante_Matriz(matriz m1, matriz m2){
                                         ((m2.p[2][0] * m2.p[1][1] * m2.p[0][2])*(-1)) + // diagonal secundaria
                                         ((m2.p[0][0] * m2.p[2][1] * m2.p[1][2])*(-1)) + // paralelas
                                         ((m2.p[1][0] * m2.p[0][1] * m2.p[2][2])*(-1)); // paralelas
-                                        printf("\n\tDeterminante da Matriz [B] = %d \n\n", det);
+                                        printf("\n\tDeterminante da Matriz [B] = %5.2f \n\n", det);
                                     }else{
                                         if(m2.linhas >= 4){
                                             // caso superior a ordem 3
@@ -246,7 +246,7 @@ void Transposta_Matriz(matriz m1, matriz m2){
             for(i = 0; i < m1.colunas; i++){
                 printf("\t|");
                 for(j = 0; j < m1.linhas; j++){
-                    printf(" %d",m1.p[j][i]);
+                    printf(" %5.2f",m1.p[j][i]);
                 }
                 printf("|\n");
             }
@@ -258,7 +258,7 @@ void Transposta_Matriz(matriz m1, matriz m2){
                 for(i = 0; i < m2.colunas; i++){
                     printf("\t|");
                     for(j = 0; j < m2.linhas; j++){
-                        printf(" %d",m2.p[j][i]);
+                        printf(" %5.2f",m2.p[j][i]);
                     }
                     printf("|\n");
                 }
@@ -281,13 +281,13 @@ void Ler_Matrizes(matriz *m1,matriz *m2){
     printf("Colunas: ");
     scanf("%d", &colunas);
     m1->colunas = colunas;
-    m1->p = (int **) malloc(m1->linhas*sizeof(int));
+    m1->p = (float **) malloc(m1->linhas*sizeof(float));
 
     for(int i = 0; i < m1->linhas ; i++){
-        m1->p[i] = (int *) malloc(m1->colunas * sizeof(int));
+        m1->p[i] = (float *) malloc(m1->colunas * sizeof(float));
         for(int j = 0; j < m1->colunas; j++){
             printf("Digite o valor do elemento da matriz 1 [%d][%d]: ",i,j);
-            scanf("%d", &m1->p[i][j]);
+            scanf("%f", &m1->p[i][j]);
         }
     }
     puts("\nDigite o número de linhas da segunda matriz.\n");
@@ -298,12 +298,12 @@ void Ler_Matrizes(matriz *m1,matriz *m2){
     printf("Colunas: ");
     scanf("%d", &colunas);
     m2->colunas = colunas;
-    m2->p = (int **) malloc(m2->linhas*sizeof(int));
+    m2->p = (float **) malloc(m2->linhas*sizeof(float));
     for(int i = 0; i < m2->linhas; i++){
-        m2->p[i] = (int *) malloc(m2->colunas*sizeof(int));
+        m2->p[i] = (float *) malloc(m2->colunas*sizeof(float));
         for(int j = 0; j < m2->colunas; j++){
             printf("Digite o valor do elemento da matriz 2 [%d][%d]: ", i,j);
-            scanf("%d", &m2->p[i][j]);
+            scanf("%f", &m2->p[i][j]);
         }
     }
 }
@@ -314,7 +314,7 @@ void Imprimir_Matrizes(matriz m1, matriz m2){
     for(i = 0; i < m1.linhas ; i++){
         printf("\t| ");
         for(j = 0; j < m1.colunas; j++){
-            printf(" %d",m1.p[i][j]);
+            printf(" %5.2f",m1.p[i][j]);
         }
         printf(" |\n");
     }
@@ -323,7 +323,7 @@ void Imprimir_Matrizes(matriz m1, matriz m2){
     for(i = 0; i < m2.linhas; i++){
         printf("\t| ");
         for(j = 0; j < m2.colunas; j++){
-            printf(" %d",m2.p[i][j]);
+            printf(" %5.2f",m2.p[i][j]);
         }
         printf(" |\n");
     }
@@ -334,7 +334,7 @@ void Imprimir_Matrizes(matriz m1, matriz m2){
 void Somar_Matrizes(matriz m1, matriz m2){
     int i = 0 ,j = 0;
     // matriz resultante :
-    int **mSoma;
+    float **mSoma;
 
     if(m1.linhas != m2.linhas || m1.colunas != m2.colunas){
         // condicao de existencia da soma :
@@ -345,20 +345,20 @@ void Somar_Matrizes(matriz m1, matriz m2){
         Imprimir_Matrizes(m1,m2);	
 
         // Operação da soma:
-        mSoma = (int **) malloc(m1.linhas * sizeof(int));
+        mSoma = (float **) malloc(m1.linhas * sizeof(float));
         for(i = 0; i < m1.linhas; i++){
-            mSoma[i] = (int *) malloc(m1.linhas * sizeof(int));
+            mSoma[i] = (float *)malloc(m1.linhas * sizeof(float));
             for(j = 0; j < m1.colunas; j++){
                 mSoma[i][j] = m1.p[i][j] + m2.p[i][j];
             }
         }
 
         //Imprime matriz resultante :
-        printf("\tVetor Resultante [A] + [B] :\n\t");
+        printf("\tMatriz Resultante [A] + [B] :\n\t");
         for(i = 0; i < m1.linhas; i++){
             printf("|");
             for(j = 0; j < m1.colunas; j++){
-                printf(" %d", mSoma[i][j]);
+                printf(" %5.2f", mSoma[i][j]);
             }
             printf(" |\n\t");
         }
@@ -372,7 +372,7 @@ void Somar_Matrizes(matriz m1, matriz m2){
 void Subtracao_Matrizes(matriz m1, matriz m2){
     int i = 0,j = 0;
     // matriz resultante :
-    int **mSub;
+    float **mSub;
 
     if(m1.linhas != m1.colunas || m2.linhas != m2.colunas){
         // condição de existência da subtração :
@@ -381,9 +381,9 @@ void Subtracao_Matrizes(matriz m1, matriz m2){
         //Imprime na tela as matrizes cadastradas na função LerMatrizes()
         Imprimir_Matrizes(m1,m2);	
         //Operação da soma:
-        mSub = (int **) malloc(m1.linhas * sizeof(int));
+        mSub = (float **) malloc(m1.linhas * sizeof(float));
         for(i = 0; i < m1.linhas; i++){
-            mSub[i] = (int *) malloc(m1.linhas * sizeof(int));
+            mSub[i] = (float *) malloc(m1.linhas * sizeof(float));
             for(j = 0; j < m1.colunas; j++){
                 mSub[i][j] = m1.p[i][j] - m2.p[i][j];
             }
@@ -394,7 +394,7 @@ void Subtracao_Matrizes(matriz m1, matriz m2){
         for(i = 0; i < m1.linhas; i++){
             printf("|");
             for(j = 0; j < m1.colunas; j++){
-                printf(" %d ",mSub[i][j]);
+                printf(" %5.2f ",mSub[i][j]);
             }
             printf(" |\n\t");
         }
@@ -404,12 +404,12 @@ void Subtracao_Matrizes(matriz m1, matriz m2){
 }
 
 
-//Realiza uma multiplicação entre duas matrizes de mesma dimensão
+//Realiza uma Multiplicaçãotiplicação entre duas matrizes de mesma dimensão
 void Multiplicar_Matrizes(matriz m1, matriz m2){
     int i, j, l;
-    int **mMult;
-    int armazenar = 0;
-    //Conndição de existência da Multiplicação
+    float **mMult;
+    float armazenar = 0;
+    //Conndição de existência da Multiplicaçã-o
     if(m1.linhas != m1.colunas || m2.linhas != m2.colunas){
         printf("\n\n\tAs matrizes [A] e [B] precisam ter a mesma dimensão\n");
     }else{
@@ -417,16 +417,16 @@ void Multiplicar_Matrizes(matriz m1, matriz m2){
         Imprimir_Matrizes(m1,m2);	
 
         printf("\tMatriz Resultante [A] * [B] :\n");
-        mMult = (int **) malloc(m1.linhas * sizeof(int));
+        mMult = (float **) malloc(m1.linhas * sizeof(float));
         for(i = 0; i < m1.linhas; i++){
             printf("\t|");
-            mMult[i] = (int *) malloc(m1.linhas * sizeof(int));
+            mMult[i] = (float *) malloc(m1.linhas * sizeof(float));
             for(j = 0; j < m1.linhas; j++){
                 for(l = 0; l < m1.linhas; l++){
                     armazenar += m1.p[i][l] * m2.p[l][j];
                 }
                 mMult[i][j] = armazenar;
-                printf(" %d ",armazenar);
+                printf(" %5.2f ",armazenar);
                 armazenar = 0;
 
             }

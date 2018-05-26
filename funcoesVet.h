@@ -19,7 +19,7 @@
 //cria a struct com as variáveis utilizadas nas funções de vetores
 typedef struct {
     int tamanho;
-    int *p;
+    float *p;
 }vetor;
 
 

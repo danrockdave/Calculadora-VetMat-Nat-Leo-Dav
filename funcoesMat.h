@@ -18,9 +18,9 @@ Professor Dr. Leonardo Sampaio
 
 //cria a struct com as variáveis utilizadas nas funções de matrizes
 typedef struct {
-    int linhas;
+   	int linhas;
     int colunas;
-    int **p;
+    float **p;
 }matriz;
 
 void Ler_Matrizes(matriz *m1, matriz *m2);
