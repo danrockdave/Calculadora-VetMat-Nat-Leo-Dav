@@ -5,7 +5,7 @@
  Natália Sales Aragão
 
  Cadeira de Introdução à Ciência da Computação 2017.2
- Professor Dr. Leonardo Sampaio
+ Professor Dr. Leonardo Sampaio.
  */
 
 #include <stdio.h>
@@ -37,6 +37,7 @@ void Simetria_Matriz(matriz m1, matriz m2){
             printf("\n\tEscolha a Matriz para realizar a operação: ");
             //Solicita ao usuário qual matriz ele deseja verificar se é simétrica
             scanf("%s",escolhaMatrizS);
+
             //Transforma a string em um valor inteiro
             escolhaMatriz = atoi(escolhaMatrizS);
             //Limpa o buffer do teclado
@@ -60,18 +61,20 @@ void Simetria_Matriz(matriz m1, matriz m2){
                     if(cont == (m1.linhas * m1.colunas)){ // total de elementos
                         printf("\n\n\tA Matriz [A] é simétrica:\n");
                         printf("\tMatriz [A]:%d x %d \n\n",m1.linhas,m1.colunas);
+
                     }else{
                         printf("\n\n\tA Matriz [A] não é simétrica:\n");
                         printf("\tMatriz [A]:%d x %d \n\n",m1.linhas,m1.colunas);
+
                     }
                 }else{
                     printf("\n\n\tA Matriz [A] não é simétrica :\n");
                     printf("\tMatriz [A]:%d x %d \n\n",m1.linhas,m1.colunas);
+
                 }
 
             }else{
                 if(escolhaMatriz == 2){
-
                     if(m2.linhas == m2.colunas){
                         // Transposta de B // Matriz B :
                         for(i = 0,ic = 0; (i < m2.colunas) && (ic < m2.linhas); i++,ic++){
