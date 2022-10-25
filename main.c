@@ -5,7 +5,7 @@
  Natália Sales Aragão
 
  Cadeira de Introdução à Ciência da Computação 2017.2
- Professor Dr. Leonardo Sampaio
+ Professor Dr. Leonardo Sampaio.
  */
 
 #include <stdio.h>
@@ -22,7 +22,7 @@ vetor v1, v2;
 matriz m1,m2;
 
 
-//Função que chama o menu das Matrizes
+//Função que chama o menu das Matrizes para que o usuario possa escolher quais ele vai utilizar
 void Menu_matrizes(){
 
     char EscolhaM[10];
@@ -114,6 +114,7 @@ void Menu_vetores(){
         scanf("%s", EscolhaM);
         OpcaoM = atoi(EscolhaM);
         switch (OpcaoM) {
+            
             case 1:
                 Ler_Vetores(&v1, &v2);
 		
