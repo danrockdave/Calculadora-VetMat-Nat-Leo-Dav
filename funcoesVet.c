@@ -5,7 +5,7 @@
  Natália Sales Aragão
 
  Cadeira de Introdução à Ciência da Computação 2017.2
- Professor Dr. Leonardo Sampaio
+ Professor Dr. Leonardo Sampaio.
  */
 
 #include <stdio.h>
@@ -18,7 +18,7 @@ void Ler_Vetores(vetor *v1, vetor *v2){
     int tamanho = 0;
     puts("\nO número de linhas de um vetor é sempre 1.");
     v1->tamanho = tamanho;
-    puts("\nDigite o tamanho do vetor.");
+    puts("\Escreva o tamanho do vetor.");
     printf("Tamanho: ");
     scanf("%d", &tamanho);
     v1->tamanho = tamanho;
@@ -26,20 +26,21 @@ void Ler_Vetores(vetor *v1, vetor *v2){
    v1->p = (float *) malloc(v1->tamanho * sizeof(float));
 
     for(j = 0; j < v1->tamanho; j++){
-        printf("\nDigite o valor dos elementos do vetor 1 [%d]: ",j);
+        printf("\Escreva o valor dos elementos do vetor 1 [%d]: ",j);
         scanf("%f", &v1->p[j]);
     }
 
     v2->tamanho = tamanho;
-    puts("\nDigite o tamanho do vetor.");
+    puts("\Escreva o tamanho do vetor.");
     printf("Tamanho: ");
     scanf("%d", &tamanho);
     v2->tamanho = tamanho;
     v2->p = (float *) malloc(v2->tamanho * sizeof(float));
 
     for(j = 0; j < v2->tamanho; j++){
-        printf("\nDigite o valor dos elementos do vetor 2 [%d]: ",j);
+        printf("\Escreva o valor dos elementos do vetor 2 [%d]: ",j);
         scanf("%f", &v2->p[j]);
+
     }
 }	
 
@@ -97,6 +98,7 @@ void Subtrair_Vetores(vetor v1, vetor v2){
     if(v1.tamanho != v2.tamanho){
         //condição de existência da subtração:
         printf("\n\n\tOs vetores [A] e [B] precisam ter a mesma dimensão\n");
+        
     }else{
         // Operação da subtração:
         vSub = (float*) malloc(v1.tamanho * sizeof(float));
